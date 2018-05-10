@@ -6,12 +6,14 @@
 import pickle
 from label import lab
 
+# takes an index and a number of labels and returns a hot-encoded list of it
+# Eg. he_zeroes (0, 3): [1, 0, 0]
 def he_zeroes (x, num_labels):
     zeroes = [0 for i in range(num_labels)]
     zeroes[x] = 1
     return zeroes
 
-# accepts input file name, output file name, and num_labels, reads input, 
+# accepts input file NAME, output file NAME, and num_labels, reads input, 
 # and creates pickled output file with labels that are hot-encoded by label
 def pro (input_f, output_f, num_labels):
     labels, in_f, line_o = lab(open(input_f), num_labels), open(input_f), []
