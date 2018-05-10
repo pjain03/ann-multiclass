@@ -1,7 +1,7 @@
 DESCRIPTION:
 Neural Network implementations to classify data into multiple classes 
 (2 or more). We take a dataset and the number of classes to classify into, 
-process the dataset into hot-encoded labels, 
+process the dataset into hot-encoded labels.
 
 DATASETS:
 1. Iris (https://archive.ics.uci.edu/ml/machine-learning-databases/iris/)
