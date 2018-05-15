@@ -1,6 +1,6 @@
 ### DESCRIPTION:
 Feed Forward Back Propagation Neural Network implementation to classify data
-into multiple classes (2 or more). 
+represented as numeric features into multiple classes (2 or more). 
 1. We take a dataset and the number of classes (n) to classify into, discover
 the first n such labels, and convert the dataset into one with hot-encoded 
 labels. (05/10/18)
