@@ -76,8 +76,6 @@ def lea (input_f, hid_layers, num_neurons):
     X_train, X_test, Y_train, Y_test, idx = split(idx, X, train, test)
     net   = setup(len(X[0][0]), len(X[1][0]), num_neurons)
 
-    print X[0]
-
     for i in range(NUM_ITER):
         for x in X: # input and labels
             # forward propagation
