@@ -25,4 +25,5 @@ simply because that encoded all possible combinations of values of input!
 (See videos 7/8)
 
 > A few key slides from this playlist (See video 10/11/12)
-![Entire Process](https://github.com/pjain03/ann-multiclass/raw/master/src/backprop.png "Logo Title Text 1")
+![Entire process](https://github.com/pjain03/ann-multiclass/raw/master/src/entire.png "Entire Process")
+![Backpropagation details](https://github.com/pjain03/ann-multiclass/raw/master/src/backprop.png "Detailed Backpropagation")
