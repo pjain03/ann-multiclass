@@ -16,8 +16,8 @@ from the previous layer to the current layer. (05/15/18)
 1. [Iris](https://archive.ics.uci.edu/ml/machine-learning-databases/iris/)
 
 ### PACKAGES:
-* pickle
-* numpy
+* [pickle](https://docs.python.org/2/library/pickle.html)
+* [numpy](https://docs.scipy.org/doc/numpy/user/quickstart.html)
 
 ### INSTRUCTIONS:
 1. `pip install -r requirements.txt`
