@@ -1,4 +1,4 @@
-### DESCRIPTION:
+### DESCRIPTION and LOG:
 Feed Forward Back Propagation Neural Network implementation to classify data
 represented as numeric features into multiple classes (2 or more). 
 1. We take a dataset and the number of classes (n) to classify into, discover
