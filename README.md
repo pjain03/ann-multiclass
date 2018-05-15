@@ -13,7 +13,8 @@ consulted (the most heavy of which have been listed below). (05/15/18)
 1. [Iris](https://archive.ics.uci.edu/ml/machine-learning-databases/iris/)
 
 ### PACKAGES:
-pickle
+* pickle
+* numpy
 
 ### INSTRUCTIONS:
 1. `pip install -r requirements.txt`
