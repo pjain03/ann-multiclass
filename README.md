@@ -3,7 +3,7 @@ Feed Forward Back Propagation Neural Network implementation to classify data
 represented as numeric features into multiple classes (2 or more). 
 1. We take a dataset and the number of classes (n) to classify into, discover
 the first n such labels, and convert the dataset into one with hot-encoded 
-labels. (05/10/18)
+labels. We store this dataset as inputs and labels in separate lists. (05/10/18)
 2. We decide on using the [sigmoid activation function](https://en.wikipedia.org/wiki/Sigmoid_function) to begin with simply
 because it is the function we are most familiar with through the COMP135 class
 taken at Tufts, the numerous videos watched online, and through other resources

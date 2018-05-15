@@ -10,28 +10,20 @@ import pickle
 import numpy as np
 
 # number of iterations for training/validating
-NUM_ITER = 10000
+NUM_ITER = 200
 # seeding randomness in net
 np.random.seed(1)
 # alpha parameter
 alpha = 0.1
 
-# expects a pickled file, and 2 natural numbers as input
-def lea (input_f, hid_layers, num_neurons):
-    if hid_layers < 0: 
-        raise ValueError('Cannot have negative number of layers')
-    if num_neurons < 0:
-        raise ValueError('Cannot have negative number of neurons per layer')
+# # accepts an unpickled input array where the last element of every input is a
+# # hot-encoded label
+# def split (I):
 
-    # load pickled file in input
-    with input_f as i:
-        X = pickle.load(i)
 
-    # inputs expected by our net are a single dimension array of numbers 
-    # followed by a label
-    input_dim  = len(X[0]) - 1
-    output_dim = len(X[0][-1])
 
+# accepts 2 whole numbers and 1 natural number
+def setup (input_dim, output_dim, num_neurons): 
     # initialize edge weights between neurons:
     # net[0]  = input layer to next layer,
     # net[-1] = output layer.
@@ -52,8 +44,35 @@ def lea (input_f, hid_layers, num_neurons):
         # 1. connect input layer to output layer
         net.append(np.random.random((input_dim, output_dim)))
 
+
+# expects a pickled file, and 2 natural numbers as input
+def lea (input_f, hid_layers, num_neurons):
+    if hid_layers < 0: 
+        raise ValueError('Cannot have negative number of layers')
+    if num_neurons < 0:
+        raise ValueError('Cannot have negative number of neurons per layer')
+
+    # load pickled file in input
+    with input_f as i:
+        X = pickle.load(i)
+
+    # array of indices to split input quickly
+    idx = np.asarray([x for x in range(len(X[0]))])
+    
+    l_i = len(X[0])
+    train = int(0.8 * l_i)
+    test  = train - l_i
+    # get new random split
+    np.random.shuffle(idx)
+    X_train, X_test = X[0][idx[:train]], X[0][idx[test:]] # select first 80% for train
+    Y_train, Y_test = X[1][idx[:train]], X[1][idx[test:]] # and last 20% for test
+
+    # get neural network with randomly initialized weights
+    net = setup(len(X[0][0]), len(X[1][0]), num_neurons)
+
     # for i in range(NUM_ITER):
-    #     # forward propagation
+    #     for x in X: # input and labels
+    #         # forward propagation
 
 
 # -------------- 
@@ -64,6 +83,6 @@ if __name__ == '__main__':
         hid_layers = int(sys.argv[2])
         num_neurons = int(sys.argv[3])
     except:
-        print "Usage: python learn.py [INPUT] [NUM_HIDDEN_LAYERS] [NUM_NEURONS]"
+        print "Usage: python learn.py [INPUT] [#HIDDEN_LAYERS] [#NEURONS]"
 
     lea(input_f, hid_layers, num_neurons)
