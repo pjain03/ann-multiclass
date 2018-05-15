@@ -16,10 +16,18 @@ np.random.seed(1)
 # alpha parameter
 alpha = 0.1
 
-# # accepts an unpickled input array where the last element of every input is a
-# # hot-encoded label
-# def split (I):
-
+# accepts an array of indices, a train and test split, and an input array
+# returns the following in the same order as it is mentioned:
+# 1. X_train = Input data, training split
+# 2. X_test  = same as above, test split
+# 3. Y_train = Input labels, training split
+# 4. Y_test  = same as above, test split
+# 5. idx     = new idx so that we can store it and shuffle to get new split next time
+def split (idx, X, train, test):
+    np.random.shuffle(idx)
+    X_train, X_test = X[0][idx[:train]], X[0][idx[test:]] # select first 80% for train
+    Y_train, Y_test = X[1][idx[:train]], X[1][idx[test:]] # and last 20% for test
+    return X_train, X_test, Y_train, Y_test, idx
 
 
 # accepts 2 whole numbers and 1 natural number
@@ -58,14 +66,13 @@ def lea (input_f, hid_layers, num_neurons):
 
     # array of indices to split input quickly
     idx = np.asarray([x for x in range(len(X[0]))])
-    
-    l_i = len(X[0])
+    # prevents overcalling the same data
+    l_i = len(X[0]) 
     train = int(0.8 * l_i)
     test  = train - l_i
-    # get new random split
-    np.random.shuffle(idx)
-    X_train, X_test = X[0][idx[:train]], X[0][idx[test:]] # select first 80% for train
-    Y_train, Y_test = X[1][idx[:train]], X[1][idx[test:]] # and last 20% for test
+
+    # get new random split  --- N.B.: to be added within loop when stratified cross validating
+    X_train, X_test, Y_train, Y_test, idx = split(idx, X, train, test)
 
     # get neural network with randomly initialized weights
     net = setup(len(X[0][0]), len(X[1][0]), num_neurons)
