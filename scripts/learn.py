@@ -79,6 +79,8 @@ def lea (input_f, hid_layers, num_neurons):
     for i in range(NUM_ITER):
         for x in X: # input and labels
             # forward propagation
+            # backward propagation
+            # correction
             x
 
 # -------------- 
