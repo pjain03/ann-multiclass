@@ -26,7 +26,8 @@ explaining many key concepts.
 represent ANY binary problem with a Neural Network of 1 hidden layer given
 x neurons in the input layer correspond to 2 ^ x layers in the hidden layer
 simply because that encoded all possible combinations of values of input!
-(See videos 7/8)
+(See videos 7/8).
+
 > A few key slides from this playlist (See video 10/11/12)
 ![Entire process](https://github.com/pjain03/ann-multiclass/raw/master/src/entire.png "Entire Process")
 ![Backpropagation details](https://github.com/pjain03/ann-multiclass/raw/master/src/backprop.png "Detailed Backpropagation")
