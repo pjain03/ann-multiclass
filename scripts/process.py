@@ -17,12 +17,14 @@ def he_zeroes (x, num_labels):
 # and creates pickled output file with labels that are hot-encoded by label
 def pro (input_f, output_f, num_labels):
     labels, in_f, line_o = lab(open(input_f), num_labels), open(input_f), []
+    # hot encoding the labels and rewriting them into output file
     for line in in_f:
         line_i = line.split(',')
         new_l  = he_zeroes(labels.get(line_i[-1]), num_labels)
         line_i.pop(-1) # remove last label
         line_i.append(new_l)
         line_o.append(line_i)
+    # actually writing the labels into output file
     with open(output_f, 'wb') as fp:
         pickle.dump(line_o, fp)
 

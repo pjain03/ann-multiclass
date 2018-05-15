@@ -8,3 +8,16 @@
 
 import pickle
 import numpy as np
+
+# expects a pickled file as input
+def lea (input_f):
+    with input_f as i:
+        X = pickle.load(i)
+    
+
+if __name__ == '__main__':
+    import sys
+    try:
+        lea(open(sys.argv[1]))
+    except:
+        print "Usage: python learn.py [INPUT]"
