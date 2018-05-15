@@ -16,6 +16,7 @@ np.random.seed(1)
 # alpha parameter
 alpha = 0.1
 
+
 # accepts an array of indices, a train and test split, and an input array
 # returns the following in the same order as it is mentioned:
 # 1. X_train = Input data, training split
@@ -31,6 +32,7 @@ def split (idx, X, train, test):
 
 
 # accepts 2 whole numbers and 1 natural number
+# returns a neural network representation (see README)
 def setup (input_dim, output_dim, num_neurons): 
     # initialize edge weights between neurons:
     # net[0]  = input layer to next layer,
@@ -51,36 +53,35 @@ def setup (input_dim, output_dim, num_neurons):
     else:
         # 1. connect input layer to output layer
         net.append(np.random.random((input_dim, output_dim)))
+    return net
 
 
-# expects a pickled file, and 2 natural numbers as input
+# accepts a pickled file, and 2 natural numbers
 def lea (input_f, hid_layers, num_neurons):
     if hid_layers < 0: 
         raise ValueError('Cannot have negative number of layers')
     if num_neurons < 0:
         raise ValueError('Cannot have negative number of neurons per layer')
-
-    # load pickled file in input
     with input_f as i:
         X = pickle.load(i)
-
-    # array of indices to split input quickly
-    idx = np.asarray([x for x in range(len(X[0]))])
-    # prevents overcalling the same data
-    l_i = len(X[0]) 
+    # idx = array of indices to split input quickly
+    # l_i, train, test = prevents overcalling the same data
+    # X_train, X_test, Y_train, Y_test = indices split into train and test, 
+    #                                    labels split into train and test
+    # net = neural net in our representation with randomly initialized weights
+    idx   = np.asarray([x for x in range(len(X[0]))])
+    l_i   = len(X[0]) 
     train = int(0.8 * l_i)
     test  = train - l_i
-
-    # get new random split  --- N.B.: to be added within loop when stratified cross validating
     X_train, X_test, Y_train, Y_test, idx = split(idx, X, train, test)
+    net   = setup(len(X[0][0]), len(X[1][0]), num_neurons)
 
-    # get neural network with randomly initialized weights
-    net = setup(len(X[0][0]), len(X[1][0]), num_neurons)
+    print X[0]
 
-    # for i in range(NUM_ITER):
-    #     for x in X: # input and labels
-    #         # forward propagation
-
+    for i in range(NUM_ITER):
+        for x in X: # input and labels
+            # forward propagation
+            x
 
 # -------------- 
 if __name__ == '__main__':

@@ -21,11 +21,12 @@ def pro (input_f, output_f, num_labels):
 
     # hot encoding the labels and rewriting them into output file
     for line in in_f:
-        line_i = line.split(',')
-        new_l  = he_zeroes(labels.get(line_i[-1]), num_labels)
-        line_i.pop(-1) # remove last label
-        output_o.append(line_i) # stores input
-        label_o.append(new_l) # stores labels
+        line_i    = line.split(',')
+        new_l     = he_zeroes(labels.get(line_i[-1]), num_labels)
+        line_i.pop(-1) # remove label
+        line_ip   = map(float, line_i) # convert to floats
+        output_o.append(asarray(line_ip)) # stores input as big-endian float array
+        label_o.append(asarray(new_l)) # stores labels as big-endian float array
 
     # actually writing the data into output file
     with open(output_f, 'wb') as fp:
