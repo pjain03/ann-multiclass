@@ -33,8 +33,8 @@ def lea (input_f, hid_layers, num_neurons):
     output_dim = len(X[0][-1])
 
     # initialize edge weights between neurons:
-    # synapses[0]  = input layer to next layer,
-    # synapses[-1] = output layer.
+    # net[0]  = input layer to next layer,
+    # net[-1] = output layer.
     # all others are hidden layers
     #
     # Morover, all edges are single dimension arrays of 
@@ -43,13 +43,13 @@ def lea (input_f, hid_layers, num_neurons):
         # 1. connect input to 1st hidden layer
         # 2. connect 1st hidden layer to other hidden layers
         # 3. connect last hiddent layer to output layer
-        synapses = np.random.random((input_dim, num_neurons))
+        net = np.random.random((input_dim, num_neurons))
         for i in range(hid_layers - 1):
-            np.append(synapses, np.random.random((num_neurons, num_neurons)))
-        np.append(synapses, np.random.random((num_neurons, output_dim)))
+            np.append(net, np.random.random((num_neurons, num_neurons)))
+        np.append(net, np.random.random((num_neurons, output_dim)))
     else:
         # 1. connect input layer to output layer
-        synapses = np.random.random((input_dim, output_dim))
+        net = np.random.random((input_dim, output_dim))
 
     # for i in range(NUM_ITER):
     #     # forward propagation
