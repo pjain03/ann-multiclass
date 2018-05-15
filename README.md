@@ -4,6 +4,10 @@ into multiple classes (2 or more).
 1. We take a dataset and the number of classes (n) to classify into, discover
 the first n such labels, and convert the dataset into one with hot-encoded 
 labels. (05/10/18)
+2. We decide on using the sigmoid activation function to begin with simply
+because it is the function we are most familiar with through the COMP135 class
+taken at Tufts, the numerous videos watched online, and through other resources
+consulted (the most heavy of which have been listed below). (05/15/18)
 
 ### DATASETS:
 1. [Iris](https://archive.ics.uci.edu/ml/machine-learning-databases/iris/)
