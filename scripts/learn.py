@@ -39,17 +39,18 @@ def lea (input_f, hid_layers, num_neurons):
     #
     # Morover, all edges are single dimension arrays of 
     # length = number of neurons in previous layer
+    net = []
     if hid_layers and num_neurons: # > 0
         # 1. connect input to 1st hidden layer
         # 2. connect 1st hidden layer to other hidden layers
         # 3. connect last hiddent layer to output layer
-        net = np.random.random((input_dim, num_neurons))
+        net.append(np.random.random((input_dim, num_neurons)))
         for i in range(hid_layers - 1):
-            np.append(net, np.random.random((num_neurons, num_neurons)))
-        np.append(net, np.random.random((num_neurons, output_dim)))
+            net.append(np.random.random((num_neurons, num_neurons)))
+        net.append(np.random.random((num_neurons, output_dim)))
     else:
         # 1. connect input layer to output layer
-        net = np.random.random((input_dim, output_dim))
+        net.append(np.random.random((input_dim, output_dim)))
 
     # for i in range(NUM_ITER):
     #     # forward propagation
