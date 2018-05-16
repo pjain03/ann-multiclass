@@ -46,6 +46,12 @@ def setup (input_dim, output_dim, hid_layers, num_neurons):
     return net
 
 
+# accepts data to activate and whether it's a derivative or not
+# Allows us to change which activation function we are using easily
+def activate (x, derivative=False):
+    return sigmoid(x, derivative)
+
+
 # See: ../src/sigmoid.png
 # Source: https://www.youtube.com/watch?v=-7scQpJT7uo [5:13]
 def sigmoid (x, derivative=False):

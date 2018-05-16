@@ -8,7 +8,7 @@
 
 import pickle
 import numpy as np
-from learn_help import split, setup, sigmoid
+from learn_help import split, setup, activate
 
 # number of iterations for training/validating
 NUM_ITER = 1
@@ -26,12 +26,12 @@ def lea (input_f, hid_layers=0, num_neurons=0):
     with input_f as i:
         X = pickle.load(i)
 
-    # INDEX OF IMPORTANT VARIABLES
-    # idx              = array of indices to split input quickly
-    # l_i, train, test = prevents overcalling the same data
-    # X_train, X_test, Y_train, Y_test 
-    #                  = indices split into train and test, labels split into train and test
-    # net              = neural net in our representation with randomly initialized weights
+    # INDEX OF IMPORTANT VARIABLES:-
+    # 1. idx              = array of indices to split input quickly
+    # 2. l_i, train, test = prevents overcalling the same data
+    # 3. X_train, X_test, Y_train, Y_test 
+    #                     = indices split into train and test, labels split into train and test
+    # 4. net              = neural net in our representation with randomly initialized weights
     idx    = np.asarray([x for x in range(len(X[0]))])
     l_i    = len(X[0]) 
     train  = int(0.8 * l_i)
@@ -46,10 +46,11 @@ def lea (input_f, hid_layers=0, num_neurons=0):
             for layer in net: 
                 nxt_lr = []
                 for node in layer:
-                    nxt_lr.append(sigmoid(np.dot(layers[cur], node)))
+                    nxt_lr.append(activate(np.dot(layers[cur], node)))
                 layers.append(np.asarray(nxt_lr)) 
                 cur += 1
-            # backward propagation
+
+            # BACKWARD PROPAGATION
             # correction
 
 
