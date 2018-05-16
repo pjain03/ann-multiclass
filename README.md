@@ -11,7 +11,7 @@ consulted (the most heavy of which have been listed below). (05/15/18)
 3. We settled on a representation for our neural network. It will be represented
 as a list of layers where each layer is represented as an array of edges leading
 from the current layer to the next layer. (05/15/18, edit: 05/16/18)
-* ![Representation](https://github.com/pjain03/ann-multiclass/raw/master/src/representation.png "Our Representation")
+> * ![Representation](https://github.com/pjain03/ann-multiclass/raw/master/src/representation.png "Our Representation")
 4. We reconsidered our neural network representation, and completed the Forward
 Propagation section. (05/16/18)
 
