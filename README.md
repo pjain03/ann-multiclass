@@ -10,7 +10,10 @@ taken at Tufts, the numerous videos watched online, and through other resources
 consulted (the most heavy of which have been listed below). (05/15/18)
 3. We settled on a representation for our neural network. It will be represented
 as a list of layers where each layer is represented as an array of edges leading
-from the previous layer to the current layer. (05/15/18)
+from the current layer to the next layer. (05/15/18, edit: 05/16/18)
+* ![Representation](https://github.com/pjain03/ann-multiclass/raw/master/src/representation.png "Our Representation")
+4. We reconsidered our neural network representation, and completed the Forward
+Propagation section. (05/16/18)
 
 ### DATASETS:
 1. [Iris](https://archive.ics.uci.edu/ml/machine-learning-databases/iris/)
@@ -36,3 +39,4 @@ simply because that encoded all possible combinations of values of input!
 ![Backpropagation details](https://github.com/pjain03/ann-multiclass/raw/master/src/backprop.png "Detailed Backpropagation")
 2. An engineering notebook style [tutorial](https://iamtrask.github.io/2015/07/12/basic-python-network/) in Python explaining the theory with
 concrete code.
+3. An entertaining [YouTube video](https://www.youtube.com/watch?v=-7scQpJT7uo) explaining activation functions.
