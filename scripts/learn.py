@@ -40,18 +40,41 @@ def lea (input_f, hid_layers=0, num_neurons=0):
     net    = setup(len(X[0][0]), len(X[1][0]), hid_layers, num_neurons)
 
     for _ in range(NUM_ITER):
-        for x in range(train):
-            # FEED FORWARD
-            layers, cur = [X_train[x]], 0 
-            for layer in net: 
+        for i in range(train):
+            # INDEX OF IMPORTANT VARIABLES:-
+
+            # FEED FORWARD:
+            # 1. First layer is just inputs.
+            # 2. Next layer on is the activated version of the input to this layer (using weights at this layer).
+            # 3. After we have gone through the entire net, we have our output.
+            sigs, cur_sig = [X_train[i]], 0 
+            for layer in net: # traverse through net
                 nxt_lr = []
                 for node in layer:
-                    nxt_lr.append(activate(np.dot(layers[cur], node)))
-                layers.append(np.asarray(nxt_lr)) 
-                cur += 1
+                    # input to NEXT layers node through THIS layer
+                    nxt_lr.append(activate(np.dot(sigs[cur_sig], node)))
+                sigs.append(np.asarray(nxt_lr)) 
+                cur_sig += 1
 
-            # BACKWARD PROPAGATION
-            # correction
+            # BACK PROPAGATION:
+            # 1. We use error weighted derivative to measure change
+            #    - at output layer this is just the difference w.r.t. the correct label.
+            #    - at other layers it is the amount that a node contributed to the output at the next layer
+            # 2. 
+            E = Y_train[i] - sigs[cur_sig]
+            deltas, cur_del = [E * activate(sigs[cur_sig], derivative=True)], 0
+            cur_sig -= 1
+            for layer in net[::-1]: # traversing backwards through our net
+                E = []
+                for node in layer.T:
+                    # error due to THIS node w.r.t. output at NEXT layer
+                    E.append(np.dot(deltas[cur_del], node))
+                deltas.append(E * activate(sigs[cur_sig], derivative=True))
+                cur_sig, cur_del = cur_sig - 1, cur_del + 1
+
+            print net
+            print deltas
+            break
 
 
 
