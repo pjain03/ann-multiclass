@@ -28,8 +28,12 @@ us a while. At first we did simply adapt [iamtrask](https://github.com/iamtrask)
 * [numpy](https://docs.scipy.org/doc/numpy/user/quickstart.html)
 
 ### INSTRUCTIONS:
+0. Clone this repository to a local directory and `cd` into it. It might also be
+advisable to use a virtualenv. See [pip](https://pip.pypa.io/en/stable/installing/) and then
+`pip install virtualenv && virtualenv [NAME] && . [NAME]/bin/activate`.
 1. `pip install -r requirements.txt`
 2. `python scripts/process.py`
+3. Once you have processed your data adequately: `python scripts/`
 
 ### RESOURCES:
 1. A [YouTube playlist](https://www.youtube.com/playlist?list=PLBv09BD7ez_4Bs9j3o8l_ZTjQZoN_3Oqs) by Professor Victor Lavrenko of University of Edinburgh
@@ -45,5 +49,5 @@ simply because that encoded all possible combinations of values of input!
 2. An engineering notebook style [tutorial](https://iamtrask.github.io/2015/07/12/basic-python-network/) by [Andrew Trask](https://github.com/iamtrask) which does an excellent job 
 explaining the theory with concrete code. 
 > * N.B.: He has explained this very eloquently. He has also got a few more tutorials
-on his [page](https://iamtrask.github.io/). [This](https://iamtrask.github.io/2015/07/27/python-network-part2/) one helped me especially.
+on his [page](https://iamtrask.github.io/). [This](https://iamtrask.github.io/2015/07/27/python-network-part2/) one was especially helpful.
 3. An entertaining [YouTube video](https://www.youtube.com/watch?v=-7scQpJT7uo) explaining activation functions.
