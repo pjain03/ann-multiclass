@@ -44,6 +44,6 @@ simply because that encoded all possible combinations of values of input!
 ![Backpropagation details](https://github.com/pjain03/ann-multiclass/raw/master/src/backprop.png "Detailed Backpropagation")
 2. An engineering notebook style [tutorial](https://iamtrask.github.io/2015/07/12/basic-python-network/) by [Andrew Trask](https://github.com/iamtrask) which does an excellent job 
 explaining the theory with concrete code. 
-* N.B.  has explained this very eloquently. He has also got a few more tutorials
+> * N.B.  has explained this very eloquently. He has also got a few more tutorials
 on his [page](https://iamtrask.github.io/). [This](https://iamtrask.github.io/2015/07/27/python-network-part2/) one helped me especially.
 3. An entertaining [YouTube video](https://www.youtube.com/watch?v=-7scQpJT7uo) explaining activation functions.
