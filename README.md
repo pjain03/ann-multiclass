@@ -28,12 +28,12 @@ us a while. At first we did simply adapt [iamtrask](https://github.com/iamtrask)
 * [numpy](https://docs.scipy.org/doc/numpy/user/quickstart.html)
 
 ### INSTRUCTIONS:
-0. Clone this repository to a local directory and `cd` into it. It might also be
+1. Clone this repository to a local directory and `cd` into it. It might also be
 advisable to use a virtualenv. See [pip](https://pip.pypa.io/en/stable/installing/) and then
 `pip install virtualenv && virtualenv [NAME] && . [NAME]/bin/activate`.
-1. `pip install -r requirements.txt`
-2. `python scripts/process.py`
-3. Once you have processed your data adequately: 
+2. `pip install -r requirements.txt`
+3. `python scripts/process.py`
+4. Once you have processed your data adequately: 
 `python scripts/learn.py`
 
 ### RESOURCES:
