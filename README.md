@@ -11,10 +11,13 @@ consulted (the most heavy of which have been listed below). (05/15/18)
 3. We settled on a representation for our neural network. It will be represented
 as a list of layers where each layer is represented as an array of edges leading
 from the current layer to the next layer. (05/15/18, edit: 05/16/18)
-> * A diagram explaining our structure:
-![Representation](https://github.com/pjain03/ann-multiclass/raw/master/src/representation.png "Our Representation")
 4. We reconsidered our neural network representation, and completed the Forward
 Propagation section. (05/16/18)
+5. We worked on Backpropagation and grasped the concepts easily. However, 
+understanding the math behind it and in turn, translating that into code took
+us a while. At first we did simply adapt [iamtrask](https://github.com/iamtrask)'s code (See Resources section below), but once we grasped the idea behind it things really fell in place!
+> * A diagram explaining our structure:me
+![Representation](https://github.com/pjain03/ann-multiclass/raw/master/src/representation1.png "Our Representation")
 
 ### DATASETS:
 1. [Iris](https://archive.ics.uci.edu/ml/machine-learning-databases/iris/)
@@ -38,6 +41,8 @@ simply because that encoded all possible combinations of values of input!
 > * A few key slides from this playlist (See video 10/11/12)
 ![Entire process](https://github.com/pjain03/ann-multiclass/raw/master/src/entire.png "Entire Process")
 ![Backpropagation details](https://github.com/pjain03/ann-multiclass/raw/master/src/backprop.png "Detailed Backpropagation")
-2. An engineering notebook style [tutorial](https://iamtrask.github.io/2015/07/12/basic-python-network/) in Python explaining the theory with
-concrete code.
+2. An engineering notebook style [tutorial](https://iamtrask.github.io/2015/07/12/basic-python-network/) by [Andrew Trask](https://github.com/iamtrask) which does an excellent job 
+explaining the theory with concrete code. 
+* N.B.  has explained this very eloquently. He has also got a few more tutorials
+on his [page](https://iamtrask.github.io/). [This](https://iamtrask.github.io/2015/07/27/python-network-part2/) one helped me especially.
 3. An entertaining [YouTube video](https://www.youtube.com/watch?v=-7scQpJT7uo) explaining activation functions.
