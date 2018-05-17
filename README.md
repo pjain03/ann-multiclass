@@ -17,7 +17,7 @@ Propagation section. (05/16/18)
 5. We worked on Backpropagation and grasped the concepts easily. However, 
 understanding the math behind it and in turn, translating that into code took
 us a while. At first we did simply adapt [iamtrask](https://github.com/iamtrask)'s code (See Resources section below), but once we grasped the idea behind it things really fell in place!
-> * A diagram explaining our structure:me
+> * A diagram explaining our structure:
 ![Representation](https://github.com/pjain03/ann-multiclass/raw/master/src/representation1.png "Our Representation")
 
 ### DATASETS:
