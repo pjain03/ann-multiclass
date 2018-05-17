@@ -33,7 +33,8 @@ advisable to use a virtualenv. See [pip](https://pip.pypa.io/en/stable/installin
 `pip install virtualenv && virtualenv [NAME] && . [NAME]/bin/activate`.
 1. `pip install -r requirements.txt`
 2. `python scripts/process.py`
-3. Once you have processed your data adequately: `python scripts/`
+3. Once you have processed your data adequately: 
+`python scripts/learn.py`
 
 ### RESOURCES:
 1. A [YouTube playlist](https://www.youtube.com/playlist?list=PLBv09BD7ez_4Bs9j3o8l_ZTjQZoN_3Oqs) by Professor Victor Lavrenko of University of Edinburgh
