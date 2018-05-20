@@ -16,7 +16,12 @@ from the current layer to the next layer. (05/15/18, edit: 05/16/18)
 Propagation section. (05/16/18)
 5. We worked on Backpropagation and grasped the concepts easily. However, 
 understanding the math behind it and in turn, translating that into code took
-us a while. At first we did simply adapt [iamtrask](https://github.com/iamtrask)'s code (See Resources section below), but once we grasped the idea behind it things really fell in place!
+us a while. At first we did simply adapt [iamtrask](https://github.com/iamtrask)'s code (See Resources section below), but once we grasped the idea behind it things really fell in place! (05/17/18)
+6. We have successfully implemented all the testing machinery. Now we will test it
+on a variety of datasets. There is a lurking suspicion that I have that I have
+overlooked some aspect of the Backpropagation. I will take some time away from my
+work and come back to it in a bit. I have also contacted a few colleagues who can
+help out! (05/19/18)
 > * A diagram explaining our structure:
 ![Representation](https://github.com/pjain03/ann-multiclass/raw/master/src/representation1.png "Our Representation")
 
