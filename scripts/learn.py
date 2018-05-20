@@ -8,14 +8,12 @@
 
 import pickle
 import numpy as np
-from learn_help import split, setup, activate
+from learn_help import split, setup, fit, predict
 
 # number of iterations for training/validating
-NUM_ITER = 1
+NUM_ITER = 10000
 # seeding randomness in net
 np.random.seed(1)
-# alpha parameter
-alpha = 0.1
 
 # accepts a pickled file, and 2 natural numbers
 def lea (input_f, hid_layers=0, num_neurons=0):
@@ -38,45 +36,15 @@ def lea (input_f, hid_layers=0, num_neurons=0):
     test   = train - l_i
     X_train, X_test, Y_train, Y_test, idx = split(idx, X, train, test)
     net    = setup(len(X[0][0]), len(X[1][0]), hid_layers, num_neurons)
-
-    for _ in range(NUM_ITER):
-        for i in range(train):
-            # FEED FORWARD:
-            # 1. First layer is just inputs.
-            # 2. Next layer on is the activated version of the input to this 
-            #    layer (using weights at this layer).
-            # 3. After we have gone through the entire net, we have our output.
-            sigs, cur_sig = [X_train[i]], 0 
-            for layer in net: # traverse through net
-                nxt_lr = []
-                for node in layer:  # all the edges leading FROM this layer to NEXT layer's node
-                    # input to NEXT layers node through THIS layer
-                    nxt_lr.append(activate(np.dot(sigs[cur_sig], node)))
-                sigs.append(np.asarray(nxt_lr)) 
-                cur_sig += 1
-
-            # BACK PROPAGATION:
-            # 1. deltas is the error weighted derivative of the next layer 
-            #    SUM(sigmoid' * E). 
-            # 2. DOT(detlas[cur_del], node) is simply error due to CURRENT node
-            #    (In entire.png this is step 4(a), error on g_j)
-            # 3. E(g) * sigmoid'(g) is the next set of deltas
-            E = Y_train[i] - sigs[cur_sig]
-            deltas, cur_del = [E * activate(sigs[cur_sig], derivative=True)], 0 # 1
-            cur_sig -= 1
-            for layer in net[::-1]: # traversing backwards through our net
-                E = []
-                for node in layer.T: # all the edges LEADING from this node in THIS layer
-                    # error due to THIS node (2)
-                    E.append(np.dot(deltas[cur_del], node))
-                deltas.append(E * activate(sigs[cur_sig], derivative=True)) # 3
-                cur_sig, cur_del = cur_sig - 1, cur_del + 1
-
-            print net
-            print
-            print deltas
-            break
-
+    print net
+    print "Training starts..."
+    for ITER in range(NUM_ITER):
+        net = fit(net, X_train, Y_train, train, ITER)
+    print "Training finished!"
+    print "Testing..."
+    print "Accuracy: %(A)f" % {"A": predict(net, X_test, Y_test, test, ITER)}
+    print "Testing finished!"
+    print net
 
 
 if __name__ == '__main__':
