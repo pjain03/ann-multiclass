@@ -21,7 +21,7 @@ def lea (input_f, hid_layers=0, num_neurons=0):
         raise ValueError('Cannot have negative number of layers')
     if num_neurons < 0:
         raise ValueError('Cannot have negative number of neurons per layer')
-    with input_f as i:
+    with open(input_f) as i:
         X = pickle.load(i)
 
     # INDEX OF IMPORTANT VARIABLES:-
@@ -51,7 +51,7 @@ if __name__ == '__main__':
     import sys
     HID, NEU = 0, 0
     try:
-        INP = open(sys.argv[1])
+        INP = sys.argv[1]
         HID = int(sys.argv[2]) # not necessary
         NEU = int(sys.argv[3]) # not necessary
     except:

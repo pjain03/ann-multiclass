@@ -27,10 +27,12 @@ help out! (05/19/18)
 
 ### DATASETS:
 1. [Iris](https://archive.ics.uci.edu/ml/machine-learning-databases/iris/)
+2. [Wine](https://archive.ics.uci.edu/ml/machine-learning-databases/wine/), modified to include labels at the end rather than the beginning of each line.
 
 ### PACKAGES:
 * [pickle](https://docs.python.org/2/library/pickle.html)
 * [numpy](https://docs.scipy.org/doc/numpy/user/quickstart.html)
+* [argparse](https://docs.python.org/2/howto/argparse.html)
 
 ### INSTRUCTIONS:
 1. Clone this repository to a local directory and `cd` into it. It might also be
@@ -40,6 +42,12 @@ advisable to use a virtualenv. See [pip](https://pip.pypa.io/en/stable/installin
 3. `python scripts/process.py`
 4. Once you have processed your data adequately: 
 `python scripts/learn.py`
+> Alternately `python run.py -h`
+
+#### Notes:
+* Remember, this net works on numerical input
+* Labels should be at the end of the original file
+* Input file must end in a newline (\n)
 
 ### RESOURCES:
 1. A [YouTube playlist](https://www.youtube.com/playlist?list=PLBv09BD7ez_4Bs9j3o8l_ZTjQZoN_3Oqs) by Professor Victor Lavrenko of University of Edinburgh
