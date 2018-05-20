@@ -4,11 +4,15 @@
 
 from __future__ import division
 import numpy as np
+from scipy.special import expit as sig
+import warnings
+
+warnings.filterwarnings("error")
 
 # seeding randomness in net
 np.random.seed(1)
 # alpha parameter
-alpha = 1.2
+alpha = 1
 
 # accepts an array of indices, a train and test split, and an input array
 # returns the following in the same order as it is mentioned:
@@ -61,7 +65,7 @@ def activate (x, derivative=False):
 def sigmoid (x, derivative=False):
     if derivative:
         return x * (1 - x)
-    return 1 / (1 + np.exp(-x))
+    return sig(x)
 
 
 # accepts a numpy array and returns a hot encoded version of it

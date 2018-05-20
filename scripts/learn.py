@@ -40,6 +40,8 @@ def lea (input_f, hid_layers=0, num_neurons=0):
     print "Training starts..."
     for ITER in range(NUM_ITER):
         net = fit(net, X_train, Y_train, train, ITER)
+        if ITER % 1000 == 0:
+            print "Accuracy: %(A)f" % {"A": predict(net, X_test, Y_test, test, ITER)}
     print "Training finished!"
     print "Testing..."
     print "Accuracy: %(A)f" % {"A": predict(net, X_test, Y_test, test, ITER)}

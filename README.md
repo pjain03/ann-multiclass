@@ -30,9 +30,9 @@ help out! (05/19/18)
 2. [Wine](https://archive.ics.uci.edu/ml/machine-learning-databases/wine/), modified to include labels at the end rather than the beginning of each line.
 
 ### PACKAGES:
-* [pickle](https://docs.python.org/2/library/pickle.html)
 * [numpy](https://docs.scipy.org/doc/numpy/user/quickstart.html)
 * [argparse](https://docs.python.org/2/howto/argparse.html)
+* [scipy](https://docs.scipy.org/doc/scipy-0.14.0/reference/)
 
 ### INSTRUCTIONS:
 1. Clone this repository to a local directory and `cd` into it. It might also be
