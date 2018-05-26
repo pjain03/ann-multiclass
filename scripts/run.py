@@ -16,8 +16,11 @@ parser.add_argument("hid", help="specify number of hidden layers. default=0", de
 parser.add_argument("neu", help="specify number of neurons per hidden layer, default=0", default=0, type=int)
 args = parser.parse_args()
 
+print "Processing begins..."
 # process input
 pro(args.i, args.o, args.l)
-
+print "Processing complete!"
+print "Learning begins..."
 # run neural net
 lea(args.o, args.hid, args.neu)
+print "Learning complete!"

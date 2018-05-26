@@ -8,10 +8,12 @@
 
 import pickle
 import numpy as np
-from learn_help import split, setup, fit, predict
+from learn_help import split, setup, fit, predict, toy_setup
 
 # number of iterations for training/validating
 NUM_ITER = 10000
+# converge if accuracy >= 90%
+converge = 98
 # seeding randomness in net
 np.random.seed(1)
 
@@ -34,19 +36,25 @@ def lea (input_f, hid_layers=0, num_neurons=0):
     l_i    = len(X[0]) 
     train  = int(0.8 * l_i)
     test   = train - l_i
+    # # for toy setup
+    # train  = 1
+    # test   = 1
     X_train, X_test, Y_train, Y_test, idx = split(idx, X, train, test)
     net    = setup(len(X[0][0]), len(X[1][0]), hid_layers, num_neurons)
-    print net
+    # net    = toy_setup()
+
     print "Training starts..."
     for ITER in range(NUM_ITER):
-        net = fit(net, X_train, Y_train, train, ITER)
         if ITER % 1000 == 0:
-            print "Accuracy: %(A)f" % {"A": predict(net, X_test, Y_test, test, ITER)}
+            acc = predict(net, X_train, Y_train, -train, ITER)
+            if acc >= converge: break
+            else: print acc 
+        net = fit(net, X_train, Y_train, train, ITER)
     print "Training finished!"
+    print net
     print "Testing..."
     print "Accuracy: %(A)f" % {"A": predict(net, X_test, Y_test, test, ITER)}
     print "Testing finished!"
-    print net
 
 
 if __name__ == '__main__':

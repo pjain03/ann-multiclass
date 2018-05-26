@@ -12,6 +12,7 @@ def lab (in_f, num_labels):
         if labels.get(label) is None:
             labels[label] = i
             i += 1
+    return labels
 
 if __name__ == "__main__":
     import sys

@@ -5,14 +5,9 @@
 from __future__ import division
 import numpy as np
 from scipy.special import expit as sig
-import warnings
 
-warnings.filterwarnings("error")
-
-# seeding randomness in net
-np.random.seed(1)
 # alpha parameter
-alpha = 1
+alpha = 10
 
 # accepts an array of indices, a train and test split, and an input array
 # returns the following in the same order as it is mentioned:
@@ -26,6 +21,7 @@ def split (idx, X, train, test):
     X_train, X_test = X[0][idx[:train]], X[0][idx[test:]] # select first 80% for train
     Y_train, Y_test = X[1][idx[:train]], X[1][idx[test:]] # and last 20% for test
     return X_train, X_test, Y_train, Y_test, idx
+    # return X[0][idx], X[0][idx], X[1][idx], X[1][idx], idx
 
 
 # accepts 2 whole numbers and 2 natural numbers
@@ -53,6 +49,17 @@ def setup (input_dim, output_dim, hid_layers, num_neurons):
     return net
 
 
+# accepts nothing and returns a toy net which we can use along
+# with toy features and updates to check if our net works
+# correctly
+def toy_setup ():
+    net = []
+    net.append(np.asarray([[1.0] * 2] * 2)) # first layer is all 1s
+    net.append(np.asarray([[0.6] * 2] * 2)) # 2nd layer is all 0.6s
+    net.append(np.asarray([[1.0] * 2])) # final layer is all 1s
+    return net
+
+
 # accepts data to activate and whether it's a derivative or not
 # Allows us to change which activation function we are using easily
 # Any activation function must have a derivative argument
@@ -71,10 +78,12 @@ def sigmoid (x, derivative=False):
 # accepts a numpy array and returns a hot encoded version of it
 def hot_encode (arr):
     r = np.zeros(len(arr))
-    r[np.where(arr == max(arr))] = 1
+    r[np.where(arr == max(arr))[0][0]] = 1
     return r
 
 
+# accepts a neural network, a set of inputs, a set of labels, and two natural numbers
+# returns a neural network fitted over the inputs
 def fit (net, X_train, Y_train, train, ITER):
     for i in range(train):
         # FEED FORWARD:
@@ -100,8 +109,8 @@ def fit (net, X_train, Y_train, train, ITER):
         # 3. SUM(E(g) * sigmoid'(g) * each edge) is the next set of deltas
         # 4. CORRECTION:
         #    - Each synapse is corrected by alpha * deltas * synapse
-        E = Y_train[i] - sigs[cur_sig]
-        deltas, cur_del, cur_sig = [E * activate(sigs[cur_sig], derivative=True)], 0, cur_sig - 1 # 1
+        E = np.asarray(Y_train[i] - sigs[cur_sig])
+        deltas, cur_del, cur_sig = [E * (-1 * activate(sigs[cur_sig], derivative=True))], 0, cur_sig - 1 # 1
         for layer in net[::-1]: # traversing backwards through our net
             E = []
             for node in layer.T: # all the edges LEADING from this node in THIS layer
@@ -109,12 +118,18 @@ def fit (net, X_train, Y_train, train, ITER):
                 E.append(np.dot(deltas[cur_del], node))
             deltas.append(E * activate(sigs[cur_sig], derivative=True)) # 3
             cur_sig, cur_del = cur_sig - 1, cur_del + 1
-        for j in range(len(net)): # 4
-            net[j] -= alpha * deltas[cur_del - j] * sigs[cur_sig + j + 1] *  net[j]
+        
+        deltas.pop(-1)
+        deltas.reverse()
 
+        for j in range(len(net)): # 4
+            # print net[j], sigs[j], deltas[j]
+            net[j] -= alpha * (np.asarray([sigs[j]]).T * deltas[j]).T
     return net
 
 
+# accepts a neural network, a set of inputs, a set of labels, and two natural numbers
+# returns an accuracy rating (as a percentage)
 def predict (net, X_test, Y_test, test, ITER):
     accuracy = 0
     for i in range(-test):
@@ -132,4 +147,5 @@ def predict (net, X_test, Y_test, test, ITER):
             cur_sig += 1
         if all(Y_test[i] == hot_encode(sigs[-1])):
             accuracy += 1
+
     return (accuracy/-test) * 100

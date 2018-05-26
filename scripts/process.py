@@ -18,7 +18,6 @@ def he_zeroes (x, num_labels):
 # and creates pickled output file with labels that are hot-encoded by label
 def pro (input_f, output_f, num_labels):
     labels, in_f, output_o, label_o = lab(open(input_f), num_labels), open(input_f), [], []
-
     # hot encoding the labels and rewriting them into output file
     for line in in_f:
         line_i    = line.split(',')
@@ -27,7 +26,6 @@ def pro (input_f, output_f, num_labels):
         line_ip   = map(float, line_i) # convert to floats
         output_o.append(asarray(line_ip)) # stores input as big-endian float array
         label_o.append(asarray(new_l)) # stores labels as big-endian float array
-
     # actually writing the data into output file
     with open(output_f, 'wb') as fp:
         pickle.dump([asarray(output_o), asarray(label_o)], fp)
